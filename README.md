@@ -1,4 +1,4 @@
-# ECRecover Noir
+# MPT Noir
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Noir-Tests](https://github.com/radni/mpt-noir/actions/workflows/noir.yml/badge.svg)](https://github.com/radni/mpt-noir/actions/workflows/noir.yml)
@@ -27,4 +27,4 @@ TODO
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/colinnielsen/noir-array-helpers/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/radni/mpt-noir/blob/main/LICENSE) file for details.
