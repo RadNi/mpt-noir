@@ -1,2 +1,2 @@
-mod mpt_body;
-mod mpt_leaf;
+pub mod mpt_body;
+pub mod mpt_leaf;
