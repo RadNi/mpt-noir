@@ -1,13 +1,13 @@
 # ECRecover Noir
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Noir-Tests](https://github.com/colinnielsen/noir-array-helpers/actions/workflows/noir.yml/badge.svg)](https://github.com/colinnielsen/noir-array-helpers/actions/workflows/noir.yml)
+[![Noir-Tests](https://github.com/radni/mpt-noir/actions/workflows/noir.yml/badge.svg)](https://github.com/radni/mpt-noir/actions/workflows/noir.yml)
 
 **This software is unaudited and should not be used in production. Use at your own risk.**
 
 <hr>
 
-**MPT Noir** includes tools to help prove Ethereum MPT in Noir Circuits.
+**MPT Noir** includes tools to prove Ethereum Merkle Patricia Trie (MPT) proofs.
 
 
 
