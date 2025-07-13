@@ -19,11 +19,21 @@ In your `Nargo.toml` file, add the following dependency:
 
 ```toml
 [dependencies]
-ecrecover = { tag = "v0.1.0", git = "https://github.com/radni/mpt-noir" }
+mpt = { tag = "v0.2.0", git = "https://github.com/radni/mpt-noir" }
 ```
 
 ## Simple Usage
-TODO
+The [mpt-noirjs](https://github.com/radni/mpt-noirjs) package is made to facilitate witness generation for mpt-noir circuits. To generate inputs for address `"MY_ADDRESS"` against the latest block you can use the following:
+
+```typescript
+
+const provider = new ethers.JsonRpcProvider("RPC_URL")
+const address = "MY_ADDRESS"
+const output = await provider.send("eth_getProof", [address, [], "latest"])
+const mpt_proof = getNodesFromProof(output.accountProof, address)
+```
+
+The `mpt_proof` contains all the data necessary to generate proof using the mpt-noir circuits. To see an elaborated example you can checkout [Balance Proof](https://github.com/RadNi/balance_proof) application. 
 
 ## License
 

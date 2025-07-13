@@ -1,26 +1,13 @@
-name: Noir
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-env:
-  CARGO_TERM_COLOR: always
+name: test suite
+on: [push, pull_request]
 
 jobs:
   test:
+    name: nargo test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout sources
-        uses: actions/checkout@v2
-
-      - name: Install Nargo
-        uses: noir-lang/noirup@v0.1.4
+      - uses: actions/checkout@v3
+      - uses: noir-lang/noirup@v0.1.4
         with:
-          toolchain: v1.0.0
-
-      - name: Run nargo test
-        run: |
-          nargo test
+          toolchain: 1.0.0
+      - run: nargo test
