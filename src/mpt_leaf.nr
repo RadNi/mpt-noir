@@ -1,30 +1,15 @@
-global STORAGE_HASH: [u8; 32] = [86, 232, 31, 23, 27, 204, 85, 166, 255, 131, 69, 230, 146, 192, 248, 110, 91, 72, 224, 27, 153, 108, 173, 192, 1, 98, 47, 181, 227, 99, 180, 33];
-global CODE_HASH: [u8; 32] = [197, 210, 70, 1, 134, 247, 35, 60, 146, 126, 125, 178, 220, 199, 3, 192, 229, 0, 182, 83, 202, 130, 39, 59, 123, 250, 216, 4, 93, 133, 164, 112];
-
 pub struct Account {
     pub nonce: [u8; 8],
     pub balance: [u8; 32],
     pub address: [u8; 20],
     pub nonce_length: u8,
-    pub balance_length: u8
+    pub balance_length: u8,
+    pub storage_hash: [u8; 32],
+    pub code_hash: [u8; 32],
 }
 
 fn get_rlp_length(first_elem: u8, length: u8) -> u8 {
     let mut rlp_length: u8 = 0;
-    // let mut length: u32 = 0;
-    // let mut index_found = false;
-    // let mut first_elem = 0;
-    // for i in 0 .. N {
-    //     if !index_found {
-    //         if data[i] != 0 {
-    //             index_found = true;
-    //             length = N - i;
-    //             if i + 1 < N {
-    //                 first_elem = data[i+1];
-    //             }
-    //         }
-    //     }
-    // }
     if length == 0 {
         rlp_length = 1;
     } else if length == 1 {
@@ -153,7 +138,7 @@ impl Account {
         leaf_rlp_encoded[index] = 0xa0;
         index += 1;
         for i in 0 .. 32 {
-            leaf_rlp_encoded[index] = STORAGE_HASH[i];
+            leaf_rlp_encoded[index] = self.storage_hash[i];
             index += 1;
         }
 
@@ -161,7 +146,7 @@ impl Account {
         leaf_rlp_encoded[index] = 0xa0;
         index += 1;
         for i in 0 .. 32 {
-            leaf_rlp_encoded[index] = CODE_HASH[i];
+            leaf_rlp_encoded[index] = self.code_hash[i];
             index += 1;
         }
 
@@ -193,7 +178,9 @@ fn test_mpt_leaf() {
         balance: [186, 230, 72, 202, 146, 111, 104, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         address: [149, 34, 34, 144, 221, 114, 120, 170, 61, 221, 56, 156, 193, 225, 209, 101, 204, 75, 175, 229],
         nonce_length: 3,
-        balance_length: 8
+        balance_length: 8,
+        storage_hash: [86, 232, 31, 23, 27, 204, 85, 166, 255, 131, 69, 230, 146, 192, 248, 110, 91, 72, 224, 27, 153, 108, 173, 192, 1, 98, 47, 181, 227, 99, 180, 33],
+        code_hash: [197, 210, 70, 1, 134, 247, 35, 60, 146, 126, 125, 178, 220, 199, 3, 192, 229, 0, 182, 83, 202, 130, 39, 59, 123, 250, 216, 4, 93, 133, 164, 112]
     };
     account.verify_leaf_node(trie_key_index, trie_key, leaf_hash)
 }
