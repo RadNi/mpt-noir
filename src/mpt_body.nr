@@ -48,7 +48,7 @@ fn calculate_extension_hash(node: Node) -> [u8; 32] {
     encoding_index += 1;
     for i in 0 .. 31 {
         if i + 1 <= key_total_length - 1 {
-            encoded[encoding_index] = node.rows[1][i];
+            encoded[encoding_index] = node.rows[1][i as u32];
             encoding_index += 1;
         }
     }
